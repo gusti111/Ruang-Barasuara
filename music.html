@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Eksplorasi diskografi lengkap Barasuara - Taifun hingga Pikiran dan Perjalanan.">
+    <title>Music - Barasuara | Portal Fans Resmi</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Barasuara</h1>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="music.html" class="active">Music</a>
+            <a href="tour.html">Tour</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="section fade-in">
+        <h2>Diskografi Lengkap</h2>
+
+        <div id="video-player-container" class="video-container hidden">
+            <div class="video-wrapper">
+                <iframe id="youtube-frame" src="" title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="player-controls-ui">
+                <h3 id="playing-title">Pilih lagu untuk memutar video</h3>
+                <button class="btn-sm" onclick="closeVideo()">Tutup Player</button>
+            </div>
+        </div>
+
+        <div class="music-showcase">
+            <div class="album-card">
+                <div class="album-cover">
+                    <img src="images/Taifun.png" alt="Cover Album Taifun">
+                </div>
+                <div class="album-info">
+                    <h3>Taifun (2015)</h3>
+                    <p>Album perdana yang memperkenalkan karakter musik Barasuara yang eksplosif.</p>
+                    <ul class="tracklist">
+                        <li>1. Nyala Suara</li>
+                        <li>2. Sendu Melagu</li>
+                        <li>3. Bahas Bahasa</li>
+                    </ul>
+                    
+                    <div class="button-group">
+                        <button class="btn" onclick="playYouTube('Nyala Suara', '47p_knysrnc')">Tonton "Nyala Suara"</button>
+                        <button class="btn" onclick="playYouTube('Sendu Melagu', 'xU8yWwG_y4A')">Tonton "Sendu Melagu"</button>
+                        <button class="btn" onclick="playYouTube('Bahas Bahasa', 'kH6mS-vT_mU')">Tonton "Bahas Bahasa"</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="album-card">
+                <div class="album-cover">
+                    <img src="images/pikiran-perjalanan.png" alt="Cover Album Pikiran dan Perjalanan">
+                </div>
+                <div class="album-info">
+                    <h3>Pikiran dan Perjalanan (2019)</h3>
+                    <p>Eksperimen sonik yang lebih kompleks dengan narasi pendewasaan.</p>
+                    <ul class="tracklist">
+                        <li>1. Pikiran dan Perjalanan</li>
+                        <li>2. Guna Manusia</li>
+                        <li>3. Pancarona</li>
+                    </ul>
+                    
+                    <div class="button-group">
+                        <button class="btn" onclick="playYouTube('Pikiran dan Perjalanan', 'dhfcsjPIbNo')">Tonton "Pikiran dan Perjalanan"</button>
+                        <button class="btn" onclick="playYouTube('Guna Manusia', 'Ik_O-r8kiIc')">Tonton "Guna Manusia"</button>
+                        <button class="btn" onclick="playYouTube('Pancarona', 'aFYUAzlgLfc')">Tonton "Pancarona"</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Barasuara Fans Project. Dikelola Oleh SIG Group.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/barasuara?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/barasuara"><i class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/intl-id/artist/5RbI1PF4n02wWKmgjk7hAE?si=zHUmzxMMSkq_e1ENO2OcPQ&nd=1&dlsi=a7cf13a4230f4098"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="lib/script.js"></script>
+</body>
+
+</html>

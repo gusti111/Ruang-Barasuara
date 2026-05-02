@@ -1,0 +1,415 @@
+:root {
+    --primary-color: #c24b2f;
+    --secondary-color: #ff6a3d;
+    --background-color: #0d0d0d;
+    --text-color: #f5f5f5;
+}
+
+/* ===== RESET ===== */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #0d0d0d;
+    color: #f5f5f5;
+}
+
+/* ===== NAVBAR ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(20, 20, 20, 0.9);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #c24b2f;
+    letter-spacing: 2px;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    position: relative;
+    transition: 0.3s;
+}
+
+/* hover */
+nav a:hover {
+    color: #ff6a3d;
+}
+
+/* underline effect */
+nav a::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0;
+    background: #ff6a3d;
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ===== HERO (PAKAI GAMBAR) ===== */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)),
+        url('images/hero.jpg') center/cover;
+
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 60px;
+    letter-spacing: 5px;
+    color: #ff6a3d;
+    animation: fadeHero 1.5s ease forwards;
+}
+
+.hero p {
+    margin-top: 10px;
+    color: #ddd;
+    animation: fadeHero 2s ease forwards;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #c24b2f;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ff6a3d;
+    transform: scale(1.05);
+}
+
+/* ===== SECTION ===== */
+.section {
+    padding: 80px 40px;
+}
+
+/* biar gak monoton */
+.section:nth-child(even) {
+    background: #141414;
+}
+
+/* SECTION TERANG (opsional buat variasi) */
+.section.light {
+    background: #f2e8dc;
+    color: #111;
+}
+
+.section.light h2 {
+    color: #c24b2f;
+}
+
+.section h2 {
+    margin-bottom: 20px;
+}
+
+/* ===== ABOUT ===== */
+.about-container {
+    display: flex;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    gap: 40px;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* ===== MUSIC  ===== */
+.music-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.music-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.album-card {
+    display: flex;
+    gap: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+.album-card:hover {
+    border-color: var(--primary-color);
+    transform: scale(1.02);
+}
+
+.album-cover img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.tracklist {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+    font-size: 0.9em;
+    color: #bbb;
+}
+
+/* ===== CARD ===== */
+.card {
+    flex: 1 1 250px;
+    max-width: 230px;
+    background: #1c1c1c;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border-left: 5px solid #c24b2f;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(194, 75, 47, 0.4); /* Glow tipis warna primer */
+    border-left: 5px solid var(--secondary-color);
+    filter: grayscale(0%);
+}
+
+/* CARD IMAGE */
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    filter: grayscale(100%);
+}
+
+/* BUTTON DALAM CARD */
+.card button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    background: #c24b2f;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card button:hover {
+    background: #ff6a3d;
+    transform: scale(1.05);
+}
+
+/* ===== TOUR LIST ===== */
+.section p {
+    margin: 10px 0;
+}
+
+/* ===== ANIMASI HERO ===== */
+@keyframes fadeHero {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Timeline Style */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: var(--primary-color);
+    top: 0;
+    bottom: 0;
+    left: 20px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background: inherit;
+}
+
+.timeline-date {
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+}
+
+.timeline-content {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero h2 {
+        font-size: 40px;
+    }
+
+    .about-container {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 40px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .section {
+        padding: 60px 20px;
+    }
+}
+
+.glitch {
+    position: relative;
+    font-weight: bold;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0d0d0d;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff6a3d;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #c24b2f;
+    clip: rect(10px, 450px, 30px, 0);
+    animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(31px, 9999px, 94px, 0); transform: skew(0.5deg); }
+    20% { clip: rect(62px, 9999px, 42px, 0); transform: skew(0.1deg); }
+    40% { clip: rect(10px, 9999px, 80px, 0); transform: skew(0.8deg); }
+    60% { clip: rect(50px, 9999px, 30px, 0); transform: skew(0.2deg); }
+    80% { clip: rect(80px, 9999px, 10px, 0); transform: skew(0.4deg); }
+    100% { clip: rect(89px, 9999px, 98px, 0); transform: skew(0.5deg); }
+}
+
+/* ===== VIDEO  ===== */
+.video-container {
+    margin-bottom: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Ratio 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.player-detail {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}

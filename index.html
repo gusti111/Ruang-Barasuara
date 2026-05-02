@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portal Resmi Fans Barasuara - Energi, Emosi, Eksplorasi. Dapatkan info terbaru, jadwal tur, dan diskografi lengkap.">
+    <title>Barasuara - Home | Portal Fans Resmi</title>
+    <link rel="stylesheet" href="style/style.css">
+    <!-- Font Awesome untuk ikon sosial media -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Barasuara</h1>
+        </div>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html" >About</a>
+            <a href="music.html">Music</a>
+            <a href="tour.html">Tour</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <!-- Diubah ke h1 untuk SEO Hierarchy -->
+            <h1 class="glitch" data-text="BARASUARA">BARASUARA</h1>
+            <p>Energi. Emosi. Eksplorasi.</p>
+            <div class="hero-btns">
+                <a href="music.html" class="btn">Explore Music</a>
+                <a href="#latest-news" class="btn btn-outline">Latest News</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- LATEST NEWS (Fitur Baru) -->
+    <section id="latest-news" class="section fade-in">
+        <h2>Warta Terbaru</h2>
+        <div class="news-grid">
+            <article class="news-card">
+                <div class="news-date">25 April 2026</div>
+                <h3>Persiapan Tur "Pikiran dan Perjalanan" 2026</h3>
+                <p>Simak persiapan intensif Iga Massardi dkk menjelang pembukaan tur di Jakarta...</p>
+                <a href="#" class="read-more">Selengkapnya →</a>
+            </article>
+            <article class="news-card">
+                <div class="news-date">20 April 2026</div>
+                <h3>Merchandise Eksklusif Edisi Terbatas</h3>
+                <p>Kolaborasi visual terbaru untuk koleksi kaos dan vinyl album Taifun...</p>
+                <a href="#" class="read-more">Selengkapnya →</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- MUSIC PREVIEW -->
+    <section class="section fade-in">
+        <h2>Latest Music</h2>
+        <div class="music-grid">
+            <div class="card">
+                <div class="card-img-placeholder">
+                    <img src="images/Taifun.png" alt="Cover Album Taifun - Barasuara">
+                </div>
+                <h3>Taifun</h3>
+                <!-- Penambahan parameter untuk simulasi fungsi audio nyata -->
+                <button onclick="playMusic('Taifun')">Play Preview</button>
+            </div>
+
+            <div class="card">
+                <div class="card-img-placeholder">
+                    <img src="images/pikiran-perjalanan.png" alt="Cover Album Pikiran dan Perjalanan - Barasuara">
+                </div>
+                <h3>Pikiran dan Perjalanan</h3>
+                <button onclick="playMusic('Pikiran dan Perjalanan')">Play Preview</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOUR PREVIEW -->
+    <section class="section fade-in">
+        <h2>Upcoming Tour</h2>
+        <div class="tour-list">
+            <div class="tour-item">
+                <span class="date">10 Mei 2026</span>
+                <span class="city">Jakarta</span>
+                <a href="tour.html" class="btn-sm">Beli Tiket</a>
+            </div>
+            <div class="tour-item">
+                <span class="date">15 Mei 2026</span>
+                <span class="city">Bandung</span>
+                <a href="tour.html" class="btn-sm">Beli Tiket</a>
+            </div>
+        </div>
+        <div class="center-btn">
+            <a href="tour.html" class="btn">Lihat Semua Jadwal</a>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER (Fitur Baru untuk Fans) -->
+    <section class="section newsletter fade-in">
+        <div class="newsletter-box">
+            <h2>Bergabung dengan Barisan</h2>
+            <p>Dapatkan update langsung ke emailmu tentang rilisan dan tur mendatang.</p>
+            <form class="subscribe-form">
+                <input type="email" placeholder="Email Anda..." required>
+                <button type="submit" class="btn">Langganan</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Barasuara Fans Project. Dikelola Oleh SIG Group.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/barasuara?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/barasuara"><i class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/intl-id/artist/5RbI1PF4n02wWKmgjk7hAE?si=zHUmzxMMSkq_e1ENO2OcPQ&nd=1&dlsi=a7cf13a4230f4098"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PERSISTENT AUDIO PLAYER (Ide Liar Placeholder) -->
+    <div id="audio-player-global" class="hidden">
+        <div class="player-info">
+            <span id="current-track">Playing: -</span>
+        </div>
+        <div class="player-controls">
+            <button>⏮</button>
+            <button id="main-play-btn">⏸</button>
+            <button>⏭</button>
+        </div>
+    </div>
+
+    <script src="lib/script.js"></script>
+</body>
+
+</html>
