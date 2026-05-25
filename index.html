@@ -14,6 +14,8 @@
 </head>
 
 <body>
+    <canvas id="visualizer-canvas" class="background-canvas"></canvas>
+
     <header>
         <div class="logo">
             <h1>Barasuara</h1>
@@ -81,7 +83,7 @@
                         <img src="images/pikiran-perjalanan.png" alt="Cover Album Pikiran dan Perjalanan" width="250" height="250" loading="lazy" style="margin: 0 auto;">
                     </div>
                     <h3>Pikiran dan Perjalanan</h3>
-                    <a href="music.html?focus=taifun" class="btn">Lihat Album</a>
+                    <a href="music.html?focus=pikiran-perjalanan" class="btn">Lihat Album</a>
                 </article>
             </div>
         </section>
@@ -151,18 +153,6 @@
             </div>
         </div>
     </footer>
-
-    <div id="audio-player-global" class="hidden" aria-live="polite">
-        <audio id="core-audio-engine" crossorigin="anonymous"></audio>
-        <div class="player-info">
-            <span id="current-track">Playing: -</span>
-        </div>
-        <div class="player-controls">
-            <button aria-label="Track Sebelumnya">⏮</button>
-            <button id="main-play-btn" aria-label="Putar atau Jeda">⏸</button>
-            <button aria-label="Track Selanjutnya">⏭</button>
-        </div>
-    </div>
 
     <script src="lib/script.js" defer></script>
 </body>
