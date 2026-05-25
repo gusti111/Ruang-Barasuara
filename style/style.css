@@ -1,0 +1,577 @@
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap; /* KUNCI: Menampilkan teks instan */
+    src: url('https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2') format('woff2');
+}
+
+/* =========================================
+   CORE VARIABLES & TOKENS
+   ========================================= */
+:root {
+    /* Color Palette */
+    --primary-color: #c24b2f;
+    --secondary-color: #ff6a3d;
+    --background-color: #0d0d0d;
+    --surface-color: rgba(255, 255, 255, 0.05);
+    --text-color: #f5f5f5;
+    --text-muted: #bbbbbb;
+    
+    /* Spacing & Layout */
+    --radius-sm: 8px;
+    --radius-md: 15px;
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+/* =========================================
+   MODERN CSS RESET
+   ========================================= */
+*, *::before, *::after {
+    box-sizing: border-box; 
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; 
+}
+
+*:focus-visible {
+    outline: 2px dashed var(--secondary-color);
+    outline-offset: 4px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =========================================
+   UTILITIES & HELPERS
+   ========================================= */
+.text-center { text-align: center; }
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* =========================================
+   NAVIGATION & HEADER
+   ========================================= */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(13, 13, 13, 0.85);
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+header h1 {
+    margin: 0;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    position: relative;
+    font-weight: 500;
+    transition: color var(--transition-normal);
+}
+
+nav a:hover, nav a.active {
+    color: var(--secondary-color);
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: var(--secondary-color);
+    transition: width var(--transition-normal);
+}
+
+nav a:hover::after, nav a.active::after {
+    width: 100%;
+}
+
+/* =========================================
+   BUTTONS
+   ========================================= */
+.btn, .btn-sm {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all var(--transition-normal);
+    font-family: inherit;
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.9em;
+}
+
+.btn:hover:not(:disabled), .btn-sm:hover:not(:disabled) {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 106, 61, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* =========================================
+   HERO SECTION
+   ========================================= */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(13, 13, 13, 0.7), rgba(13, 13, 13, 1)),
+        url('../images/hero.jpg') center/cover no-repeat;
+    text-align: center;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 8vw, 80px); 
+    letter-spacing: 5px;
+    color: var(--secondary-color);
+    margin: 0;
+    animation: fadeHero 1s ease forwards;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    animation: fadeHero 1.5s ease forwards;
+}
+
+.hero-btns {
+    margin-top: 30px;
+    gap: 15px;
+    display: flex;
+    justify-content: center;
+    animation: fadeHero 2s ease forwards;
+}
+
+/* =========================================
+   LAYOUT, SECTIONS & ALIGNMENT FIX
+   ========================================= */
+.section {
+    padding: 100px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    margin-bottom: 50px;
+}
+
+.section-header .subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-top: -15px;
+}
+
+.section h2 {
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+}
+
+/* PATCH: Memastikan garis bawah ikut ke tengah saat text-center aktif */
+.text-center h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* =========================================
+   COMPONENTS: CARDS & LISTS
+   ========================================= */
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: #1c1c1c;
+    padding: 20px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    border-top: 4px solid var(--primary-color);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(194, 75, 47, 0.2);
+    border-color: var(--secondary-color);
+}
+
+.card img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    margin-bottom: 15px;
+    filter: grayscale(100%);
+    transition: filter var(--transition-normal);
+}
+
+.card:hover img {
+    filter: grayscale(0%);
+}
+
+.info-list {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 12px;
+    background: var(--surface-color);
+    padding: 20px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 25px;
+}
+
+.info-list dt { font-weight: 700; color: var(--secondary-color); }
+.info-list dd { margin: 0; }
+
+.album-card {
+    display: flex;
+    gap: 40px;
+    background: var(--surface-color);
+    padding: 30px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 40px;
+}
+
+.album-cover { flex-shrink: 0; }
+.album-cover img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.tracklist {
+    padding-left: 20px;
+    color: var(--text-muted);
+}
+
+/* =========================================
+   COMPONENTS: TOUR DASHBOARD
+   ========================================= */
+.tour-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tour-card {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    align-items: center;
+    background: var(--surface-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    padding: 20px 30px;
+    transition: transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.tour-card:hover:not(.sold-out) {
+    border-color: var(--primary-color);
+    transform: translateX(10px);
+}
+
+.tour-date time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--secondary-color);
+    line-height: 1.1;
+}
+
+.tour-date .day { font-size: 32px; font-weight: 800; }
+.tour-date .month { text-transform: uppercase; font-size: 14px; letter-spacing: 2px; }
+.tour-date .year { font-size: 12px; color: #888; }
+
+.tour-details h3 { margin: 0 0 5px 0; font-size: 20px; }
+.tour-details p { margin: 0; color: var(--text-muted); }
+
+.btn-disabled { background: #333; color: #777; cursor: not-allowed; }
+.tour-card.sold-out { opacity: 0.5; filter: grayscale(100%); }
+
+/* =========================================
+   COMPONENTS: FORMS & CONTACT
+   ========================================= */
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--surface-color);
+    padding: 40px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    padding: 14px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-sm);
+    color: white;
+    font-family: inherit;
+    transition: all var(--transition-fast);
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(255, 106, 61, 0.2);
+    outline: none;
+}
+
+.btn-block { width: 100%; padding: 16px; font-size: 1.1rem; }
+
+/* =========================================
+   COMPONENTS: MEDIA PLAYERS (VIDEO & AUDIO)
+   ========================================= */
+.video-container {
+    margin-bottom: 50px;
+    background: var(--surface-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Ratio 16:9 untuk iFrame */
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.player-controls-ui {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.player-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.video-help-text,
+.video-error-text {
+    margin: 8px 0 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.video-error-text {
+    color: #ff8b8b;
+}
+
+#audio-player-global {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(20, 20, 20, 0.95);
+    border-top: 2px solid var(--primary-color);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+    transform: translateY(0);
+    transition: transform 0.4s ease;
+}
+
+#audio-player-global.hidden {
+    transform: translateY(100%);
+}
+
+.player-info { font-weight: bold; color: var(--secondary-color); }
+.player-controls button {
+    background: none; border: none; color: white;
+    font-size: 1.5rem; cursor: pointer; margin: 0 10px;
+    transition: color 0.2s;
+}
+.player-controls button:hover { color: var(--primary-color); }
+
+.hidden { display: none !important; }
+
+/* =========================================
+   ANIMATIONS & EFFECTS
+   ========================================= */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeHero {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.glitch { position: relative; }
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--secondary-color);
+    animation: glitch-anim-1 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: 2px 0 var(--primary-color);
+    animation: glitch-anim-2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+    0% { clip-path: inset(20% 0 80% 0); transform: skew(0.5deg); }
+    20% { clip-path: inset(60% 0 10% 0); transform: skew(0.1deg); }
+    40% { clip-path: inset(40% 0 50% 0); transform: skew(0.8deg); }
+    60% { clip-path: inset(80% 0 5% 0); transform: skew(0.2deg); }
+    80% { clip-path: inset(10% 0 70% 0); transform: skew(0.4deg); }
+    100% { clip-path: inset(30% 0 20% 0); transform: skew(0.5deg); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip-path: inset(10% 0 60% 0); }
+    20% { clip-path: inset(30% 0 20% 0); }
+    40% { clip-path: inset(70% 0 10% 0); }
+    60% { clip-path: inset(20% 0 50% 0); }
+    80% { clip-path: inset(50% 0 30% 0); }
+    100% { clip-path: inset(5% 0 80% 0); }
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVE)
+   ========================================= */
+@media (max-width: 768px) {
+    header { flex-direction: column; padding: 15px; gap: 15px; }
+    nav { flex-wrap: wrap; justify-content: center; gap: 15px; }
+    
+    .section { padding: 60px 20px; }
+    
+    .album-card { flex-direction: column; align-items: center; text-align: center; }
+    .album-cover img { width: 100%; max-width: 300px; }
+    .tracklist { padding: 0; list-style-position: inside; }
+    .button-group { display: flex; flex-direction: column; gap: 10px; }
+    
+    .tour-card { grid-template-columns: 1fr; text-align: center; gap: 15px; }
+    .tour-card .btn { width: 100%; }
+    
+    .info-list { grid-template-columns: 1fr; gap: 5px; text-align: center; }
+    .info-list dt { margin-top: 10px; }
+    
+    #audio-player-global { flex-direction: column; gap: 10px; padding: 15px; text-align: center; }
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hubungi manajemen Barasuara untuk urusan bisnis, pemesanan panggung, atau pertanyaan pers.">
+    <title>Contact - Barasuara | Portal Fans Resmi</title>
+    
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>Barasuara</h1>
+        </div>
+        <nav aria-label="Navigasi Utama">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="music.html">Music</a>
+            <a href="tour.html">Tour</a>
+            <a href="contact.html" class="active" aria-current="page">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section fade-in" aria-labelledby="contact-heading">
+            <div class="contact-container">
+                <div class="contact-header">
+                    <h2 id="contact-heading">Hubungi Kami</h2>
+                    <p>Untuk kebutuhan *booking*, tawaran kolaborasi, atau pertanyaan seputar tur, silakan kirimkan pesan melalui formulir di bawah ini.</p>
+                </div>
+
+                <form id="contact-form" class="contact-form" action="#" method="POST">
+                    
+                    <div class="visually-hidden" aria-hidden="true">
+                        <label for="bot-field">Tinggalkan kosong jika Anda manusia:</label>
+                        <input type="text" id="bot-field" name="bot-field" tabindex="-1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user-name">Nama Lengkap / Instansi</label>
+                        <input type="text" id="user-name" name="name" required placeholder="Cth: Gusty Faqikh - BEM Polnep">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user-email">Alamat Email</label>
+                        <input type="email" id="user-email" name="email" required placeholder="email@domain.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message-subject">Subjek</label>
+                        <select id="message-subject" name="subject" required>
+                            <option value="" disabled selected>Pilih keperluan...</option>
+                            <option value="booking">Booking / Manggung</option>
+                            <option value="media">Media / Wawancara</option>
+                            <option value="partnership">Sponsorship / Kemitraan</option>
+                            <option value="general">Pertanyaan Umum</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user-message">Pesan</label>
+                        <textarea id="user-message" name="message" rows="6" required placeholder="Tulis rincian pesan Anda di sini..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Kirim Pesan <i class="fas fa-paper-plane"></i></button>
+                </form>
+                
+                <div class="contact-direct">
+                    <p>Atau hubungi via email secara langsung:</p>
+                    <a href="mailto:booking@barasuara.com" class="direct-email"><i class="fas fa-envelope"></i> booking&#64;barasuara.com</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2026 Barasuara Fans Project. Dikelola Oleh SIG Group.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/barasuara" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/barasuara" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://open.spotify.com/intl-id/artist/5RbI1PF4n02wWKmgjk7hAE?si=zHUmzxMMSkq_e1ENO2OcPQ&nd=1&dlsi=a7cf13a4230f4098" target="_blank" rel="noopener noreferrer" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="lib/script.js" defer></script>
+</body>
+
+</html>
