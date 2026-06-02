@@ -2,7 +2,7 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-display: swap; /* KUNCI: Menampilkan teks instan */
+    font-display: swap; /* KUNCI: Menampilkan teks instan tanpa blocking */
     src: url('https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2') format('woff2');
 }
 
@@ -26,10 +26,14 @@
 }
 
 /* =========================================
-   MODERN CSS RESET
+   MODERN CSS RESET & LAYOUT ENGINE
    ========================================= */
 *, *::before, *::after {
     box-sizing: border-box; 
+}
+
+html {
+    height: 100%;
 }
 
 body {
@@ -39,6 +43,24 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden; 
+    
+    /* MECHANISM: Sticky Footer */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Memaksa elemen main mengambil sisa ruang vertikal yang kosong */
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+    width: 100%;
+    background: #080808;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 30px 40px;
 }
 
 *:focus-visible {
@@ -239,19 +261,21 @@ nav a:hover::after, nav a.active::after {
     background: var(--primary-color);
 }
 
-/* PATCH: Memastikan garis bawah ikut ke tengah saat text-center aktif */
 .text-center h2::after {
     left: 50%;
     transform: translateX(-50%);
 }
 
 /* =========================================
-   COMPONENTS: CARDS & LISTS
+   COMPONENTS: FLEX GRID SYSTEM (ANTI-EMPTY SPACE)
    ========================================= */
-.music-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
+.news-grid, .music-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Memusatkan item yang tersisa di baris bawah */
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .card {
@@ -261,6 +285,10 @@ nav a:hover::after, nav a.active::after {
     text-align: center;
     border-top: 4px solid var(--primary-color);
     transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+    
+    /* Pengaturan fleksibilitas kartu agar seimbang */
+    flex: 0 1 calc(33.333% - 25px);
+    min-width: 280px;
 }
 
 .card:hover {
@@ -283,6 +311,30 @@ nav a:hover::after, nav a.active::after {
     filter: grayscale(0%);
 }
 
+/* =========================================
+   COMPONENTS: ABOUT & TIMELINE
+   ========================================= */
+.about-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.about-text {
+    flex: 1 1 500px;
+}
+
+.about-image {
+    flex: 1 1 400px;
+}
+
+.about-image img {
+    border-radius: var(--radius-sm);
+    width: 100%;
+    height: auto;
+}
+
 .info-list {
     display: grid;
     grid-template-columns: 140px 1fr;
@@ -296,28 +348,124 @@ nav a:hover::after, nav a.active::after {
 .info-list dt { font-weight: 700; color: var(--secondary-color); }
 .info-list dd { margin: 0; }
 
+.timeline {
+    margin: 30px auto 0 auto;
+    max-width: 800px;
+    text-align: left;
+}
+
+.timeline-item {
+    margin-bottom: 25px;
+}
+
+.timeline-date {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.timeline-content {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: var(--radius-sm);
+    margin-top: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* =========================================
+   COMPONENTS: ANATOMI SUARA (GRID SYSTEM)
+   ========================================= */
+.anatomy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 30px auto 0 auto;
+    text-align: left;
+}
+
+.anatomy-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-left: 3px solid var(--primary-color);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    transition: background var(--transition-fast);
+}
+
+.anatomy-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.anatomy-item h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.anatomy-item h4 i {
+    color: var(--primary-color);
+}
+
+.anatomy-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* =========================================
+   COMPONENTS: ALBUM SHOWCASE
+   ========================================= */
+.music-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
 .album-card {
     display: flex;
-    gap: 40px;
-    background: var(--surface-color);
+    gap: 35px;
+    background: rgba(255, 255, 255, 0.03);
     padding: 30px;
     border-radius: var(--radius-md);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    margin-bottom: 40px;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.album-cover { flex-shrink: 0; }
+.album-cover { 
+    flex: 1 1 250px; 
+    max-width: 280px; 
+    margin: 0 auto; 
+}
+
 .album-cover img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
+    width: 100%;
+    height: auto;
     border-radius: var(--radius-sm);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+.album-info {
+    flex: 2 1 450px;
 }
 
 .tracklist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
     padding-left: 20px;
-    color: var(--text-muted);
+    margin: 0 0 25px 0;
+    color: #ccc;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 /* =========================================
@@ -326,74 +474,100 @@ nav a:hover::after, nav a.active::after {
 .tour-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    max-width: 800px;
+    gap: 20px;
+    max-width: 850px;
     margin: 0 auto;
 }
 
 .tour-card {
-    display: grid;
-    grid-template-columns: 120px 1fr auto;
+    display: flex;
     align-items: center;
-    background: var(--surface-color);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-sm);
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.03);
     padding: 20px 30px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    flex-wrap: wrap;
+    gap: 20px;
     transition: transform var(--transition-normal), border-color var(--transition-normal);
 }
 
 .tour-card:hover:not(.sold-out) {
     border-color: var(--primary-color);
-    transform: translateX(10px);
+    transform: translateX(5px);
+}
+
+.tour-date {
+    min-width: 80px;
 }
 
 .tour-date time {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    color: var(--secondary-color);
+    text-align: center;
     line-height: 1.1;
 }
 
-.tour-date .day { font-size: 32px; font-weight: 800; }
-.tour-date .month { text-transform: uppercase; font-size: 14px; letter-spacing: 2px; }
-.tour-date .year { font-size: 12px; color: #888; }
+.tour-date .day { font-size: 1.8rem; font-weight: bold; color: var(--primary-color); }
+.tour-date .month { font-size: 0.9rem; text-transform: uppercase; color: #ccc; }
+.tour-date .year { font-size: 0.8rem; color: #666; }
 
-.tour-details h3 { margin: 0 0 5px 0; font-size: 20px; }
-.tour-details p { margin: 0; color: var(--text-muted); }
+.tour-details {
+    flex: 1 1 250px;
+}
 
-.btn-disabled { background: #333; color: #777; cursor: not-allowed; }
-.tour-card.sold-out { opacity: 0.5; filter: grayscale(100%); }
+.tour-details h3 { margin: 0 0 5px 0; font-size: 1.3rem; }
+.tour-details p { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
+
+.btn-disabled { background: #333; color: #666; cursor: not-allowed; border: none; }
+.tour-card.sold-out { opacity: 0.6; }
 
 /* =========================================
    COMPONENTS: FORMS & CONTACT
    ========================================= */
 .contact-container {
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto;
-    background: var(--surface-color);
+    background: rgba(255, 255, 255, 0.03);
     padding: 40px;
     border-radius: var(--radius-md);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-header {
+    margin-bottom: 35px;
+}
+
+.contact-header p {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .form-group {
-    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 
 .form-group label {
-    margin-bottom: 8px;
-    color: var(--text-muted);
-    font-size: 0.9em;
+    color: #ccc;
+    font-size: 0.9rem;
     font-weight: 600;
 }
 
 .form-group input, .form-group select, .form-group textarea {
-    padding: 14px;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-sm);
     color: white;
     font-family: inherit;
@@ -406,13 +580,21 @@ nav a:hover::after, nav a.active::after {
     outline: none;
 }
 
-.btn-block { width: 100%; padding: 16px; font-size: 1.1rem; }
+.btn-block { width: 100%; padding: 14px; font-size: 1rem; font-weight: 600; }
+
+.contact-direct {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-direct p { color: #888; font-size: 0.9rem; margin-bottom: 10px; }
+.direct-email { color: var(--secondary-color); text-decoration: none; font-weight: 600; font-size: 1.05rem; }
 
 /* =========================================
    COMPONENTS: MEDIA PLAYERS (VIDEO & AUDIO)
    ========================================= */
 .video-container {
-    margin-bottom: 50px;
     background: var(--surface-color);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-md);
@@ -422,7 +604,7 @@ nav a:hover::after, nav a.active::after {
 
 .video-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* Ratio 16:9 untuk iFrame */
+    padding-bottom: 56.25%; /* Ratio 16:9 */
     height: 0;
     overflow: hidden;
     border-radius: var(--radius-sm);
@@ -443,23 +625,6 @@ nav a:hover::after, nav a.active::after {
     align-items: center;
     gap: 15px;
     flex-wrap: wrap;
-}
-
-.player-actions {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-}
-
-.video-help-text,
-.video-error-text {
-    margin: 8px 0 0;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-}
-
-.video-error-text {
-    color: #ff8b8b;
 }
 
 #audio-player-global {
@@ -490,6 +655,21 @@ nav a:hover::after, nav a.active::after {
     transition: color 0.2s;
 }
 .player-controls button:hover { color: var(--primary-color); }
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    color: var(--text-muted);
+    font-size: 1.3rem;
+    transition: color var(--transition-fast);
+}
+
+.social-links a:hover {
+    color: var(--secondary-color);
+}
 
 .hidden { display: none !important; }
 
@@ -554,24 +734,57 @@ nav a:hover::after, nav a.active::after {
 }
 
 /* =========================================
-   MEDIA QUERIES (RESPONSIVE)
+   MEDIA QUERIES (RESPONSIVE ENGINE)
    ========================================= */
+@media (max-width: 991px) {
+    .card {
+        flex: 0 1 calc(50% - 25px);
+    }
+}
+
 @media (max-width: 768px) {
     header { flex-direction: column; padding: 15px; gap: 15px; }
     nav { flex-wrap: wrap; justify-content: center; gap: 15px; }
     
     .section { padding: 60px 20px; }
     
+    .card {
+        flex: 1 1 100%;
+    }
+    
     .album-card { flex-direction: column; align-items: center; text-align: center; }
     .album-cover img { width: 100%; max-width: 300px; }
     .tracklist { padding: 0; list-style-position: inside; }
     .button-group { display: flex; flex-direction: column; gap: 10px; }
     
-    .tour-card { grid-template-columns: 1fr; text-align: center; gap: 15px; }
-    .tour-card .btn { width: 100%; }
+    .tour-card { flex-direction: column; text-align: center; gap: 15px; }
+    .tour-date { width: 100%; }
     
     .info-list { grid-template-columns: 1fr; gap: 5px; text-align: center; }
     .info-list dt { margin-top: 10px; }
     
     #audio-player-global { flex-direction: column; gap: 10px; padding: 15px; text-align: center; }
+}
+/* Aturan Override untuk Hemat Bandwidth & Akselerasi Hardware GPU */
+.low-perf-mode header,
+.low-perf-mode #audio-player-global,
+.low-perf-mode .video-container {
+    backdrop-filter: none !important; /* Mematikan kalkulasi blur piksel real-time yang berat */
+    -webkit-backdrop-filter: none !important;
+    background: #0d0d0d !important;
+}
+
+.low-perf-mode .glitch::before,
+.low-perf-mode .glitch::after,
+.low-perf-mode .fade-in {
+    animation: none !important; /* Mematikan loops CPU animation */
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+.glitch { 
+    position: relative; 
+    /* OPTIMASI ENGINE: Memaksa isolasi layer independen pada komposit GPU */
+    will-change: clip-path, transform;
+    transform: translateZ(0);
 }
