@@ -29,6 +29,23 @@ Ruang Barasuara explores how a focused music website can bring editorial content
 
 The content is maintained in the source files. Dates, event details, links, and media references should be checked before any public presentation.
 
+## How the experience flows
+
+The project is a static, page-based fan experience. Visitors move between editorial and media sections, while playback is handled by the browser through an embedded media player.
+
+```mermaid
+flowchart TD
+    A["Visitor opens the website"] --> B["Home page"]
+    B --> C["Explore a section"]
+    C --> D["About"]
+    C --> E["Music"]
+    C --> F["Tour"]
+    C --> G["Contact"]
+    E --> H["Select a media item"]
+    H --> I["Embedded YouTube player"]
+    F --> J["Review event information"]
+```
+
 ## Technology
 
 | Layer | Implementation |
